@@ -19,7 +19,7 @@ int ForcaBruta(const char* t, int n, const char* p, int m){
 
 int main(void){
     printf("Teste1\n");
-    printf("-> %d", ForcaBruta("teste", strlen("teste"), "st", strlen("ola")));
+    printf("-> %d", ForcaBruta("teste", 5, "st4", 3));
 
 
     return 0;
