@@ -4,13 +4,16 @@
 
 int BuscaBinariaRec(int vet[], int v, int ini, int fim){
     int meio = (ini + fim)/2;
-    printf("--%d--\n", meio);
+    
     if (ini > fim){
         return -1;
-    }else if(v == vet[meio]){
+    }else if(vet[meio] == v){
+        return meio;
+    }
+    else if(vet[meio] > v){
         return BuscaBinariaRec(vet, v, ini, meio - 1);
-    }else if (v < vet[meio]){
-        return BuscaBinariaRec(vet, v, ini, meio - 1);    
+    }else{
+        return BuscaBinariaRec(vet, v, meio + 1, fim);    
     }
 }
 
