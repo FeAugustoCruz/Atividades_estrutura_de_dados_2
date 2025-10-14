@@ -1,3 +1,5 @@
 # Atividades_estrutura_de_dados_2
+
 ***
-:shipit:
+Atividades feitas para estudo :P :shipit:
+***
