@@ -24,7 +24,7 @@ void PreKMP(const char* padrao, int padraolen, int aux[]){
 
 int BuscaKMP(const char* texto, int textlen, const char* chave, int chavelen){
     int auxiliar[chavelen];
-    PreKMP(chave, chavelen, auxiliar);//pre-processa a chave 
+    PreKMP(chave, chavelen, auxiliar);//pre-processa a chave vetor auxiliar preenchido
     
     for(int t = 0; t < chavelen; t ++){
         printf("[%d]", auxiliar[t]);
@@ -32,14 +32,19 @@ int BuscaKMP(const char* texto, int textlen, const char* chave, int chavelen){
 
     int k = -1;
 
-    for(int i = 0;i <= textlen - 1; i++){
-        while(k > -1 && texto[k + 1] != chave[i]){
-            k = auxiliar[k];
+    for(int i = 0; i < textlen ; i++){//responsável por percorrer o texto
+        printf("======== %d loop ========\n", i);
+        printf("int i = %d\nint k = %d\nchave[k + 1] = %c\ntexto[i] = %c\n", i, k, chave[k + 1], texto[i]);
+        while(k > -1 && chave[k + 1] != texto[i]){
+            printf("WHILE EXECULTADO....\n");
+            k = auxiliar[k];//pula para a posição onde o caractere 'k' é pre-fixo   
         }            
-        if(texto[i] == chave[k + 1]){
-            k = k + 1;
+        if(texto[i] == chave[k + 1]){//local onde se compara o texto com o padrão
+            printf("IF EXECULTADO.....\n");
+            k = k + 1;//código para passar para o próximo caractere da chave
         }
-        if(k = chavelen - 1){
+        if(k == chavelen - 1){//Caso k se iguale ao tamanho do padrão, retorne a posição atual no texto menos o tamanho da chave.
+            printf("RETURN EXECULTADO....\n");
             return i - k;
         }
     }
@@ -47,10 +52,10 @@ int BuscaKMP(const char* texto, int textlen, const char* chave, int chavelen){
 }
 
 int main(void){
-    char texto[10] = "AMORDEROMA";
-    char chave[3] = "ROM";
+    char texto[16] = "abacaabaccabacab";
+    char chave[6] = "abacab";
 
-    BuscaKMP(texto, 10, chave, 3);
+    printf("\n\n\n\n==%d==", BuscaKMP(texto, 20, chave, 6));
 
     //int auxiliar[10];
     
