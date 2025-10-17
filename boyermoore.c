@@ -3,7 +3,7 @@
 void bmh(){
     char tabela[255];
     for(int j = 0; j < 255; j ++){
-        tabela[j] = m
+        tabela[j] = m;
     }
 }
 
