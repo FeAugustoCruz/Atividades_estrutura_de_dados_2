@@ -8,16 +8,14 @@ int bmh(const char* texto, const char* chave){
     int chavelen = strlen(chave);
 
 
-    char tabela[MAXCHAR];//inicializando uma tabela ascii
+    char tabela[MAXCHAR];
     for(int j = 0; j < 255; j ++){
         tabela[j] = chavelen;
     }
     for(int j = 1; j < chavelen; j ++){
-        tabela[chave[j-1]] = chavelen - j;//bota em cada posição da chave na tabela ascii sua posição correspondente na chave
+        tabela[chave[j-1]] = chavelen - j;
     }
-    /*for(int k = 0; k < 255; k++){
-        printf("%d\n", tabela[k]);
-    }*/
+   
     int i = chavelen;
     while(i <= textlen){
         int k = i;
@@ -41,16 +39,13 @@ int bmhcont(const char* texto, const char* chave){
     int contOcorrencia = 0;
 
 
-    char tabela[MAXCHAR];//inicializando uma tabela ascii
+    char tabela[MAXCHAR];
     for(int j = 0; j < 255; j ++){
         tabela[j] = chavelen;
     }
     for(int j = 1; j < chavelen; j ++){
-        tabela[chave[j-1]] = chavelen - j;//bota em cada posição da chave na tabela ascii sua posição correspondente na chave
+        tabela[chave[j-1]] = chavelen - j;
     }
-    /*for(int k = 0; k < 255; k++){
-        printf("%d\n", tabela[k]);
-    }*/
     int i = chavelen;
     while(i <= textlen){
         int k = i;
