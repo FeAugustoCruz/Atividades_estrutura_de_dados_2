@@ -12,13 +12,14 @@ int bmh(const char* texto, const char* chave){
     for(int j = 0; j < 255; j ++){
         tabela[j] = chavelen;
     }
-    for(int j = 1; j < chavelen; j ++){
+    for(int j = 1; j <= chavelen; j ++){
+        printf("--%c-- %d\n", chave[j-1], chave[j-1]);
         tabela[chave[j-1]] = chavelen - j;//bota em cada posição da chave na tabela ascii sua posição correspondente na chave
     }
-    /*for(int k = 0; k < 255; k++){
-        printf("%d\n", tabela[k]);
-    }*/
-    int i = chavelen;
+    for(int k = 0; k < 255; k++){
+        printf("[%d]<-%d \n", tabela[k], k);
+    }
+    int i = chavelen; 
     while(i <= textlen){
         int k = i;
         int j = chavelen;
@@ -45,7 +46,7 @@ int bmhcont(const char* texto, const char* chave){
     for(int j = 0; j < 255; j ++){
         tabela[j] = chavelen;
     }
-    for(int j = 1; j < chavelen; j ++){
+    for(int j = 1; j <= chavelen; j ++){
         tabela[chave[j-1]] = chavelen - j;//bota em cada posição da chave na tabela ascii sua posição correspondente na chave
     }
     /*for(int k = 0; k < 255; k++){
@@ -70,8 +71,8 @@ int bmhcont(const char* texto, const char* chave){
 }
 
 int main(void){
-    printf("[%d]\n", bmh("TOMADATOMADA", "TOMA"));
-    printf("Total de ocorrencia: %d\n", bmhcont("TOMADATOMADA", "TOMA"));
+    printf("[%d]\n", bmh("TOMSDATOMADA", "TOMA"));
+    printf("Total de ocorrencia: %d\n", bmhcont("TOMSDATOMADA", "TOMA"));
 
     return 0;
 }

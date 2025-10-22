@@ -8,7 +8,7 @@ int bmh(const char* texto, const char* chave){
     int chavelen = strlen(chave);
 
 
-    char tabela[MAXCHAR];
+    char tabela[MAXCHAR]; 
     for(int j = 0; j < 255; j ++){
         tabela[j] = chavelen;
     }
