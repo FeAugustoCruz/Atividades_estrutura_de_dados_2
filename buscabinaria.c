@@ -23,6 +23,7 @@ int BuscaBinaria(int vet[], int v){
 
     for(int i = 0; esq < dir; i ++){
         int meio = (esq + dir)/2;
+        printf("meio = %d\n", meio);
         if (v < vet[meio] ){
             dir = meio - 1;
         }else if (v > vet[meio]){
@@ -35,15 +36,15 @@ int BuscaBinaria(int vet[], int v){
 }
 
 int main(void){
-    int valores[LEN] = {1,2,3,4,5,6,7,8,9,10};
+    int valores[LEN] = {8,14,19,23,27,32,38,42,47,51};
 
-    int valor = BuscaBinaria(valores, 5);
+    int valor = BuscaBinaria(valores, 32);
 
 
     printf("normal: %d\n", valor);
 
-    int valor2 = BuscaBinariaRec(valores, 3, 0, LEN-1);
+    //int valor2 = BuscaBinariaRec(valores, 3, 0, LEN-1);
 
-    printf("recursiva: %d\n", valor2);
+    //printf("recursiva: %d\n", valor2);
     return 0;
 }
