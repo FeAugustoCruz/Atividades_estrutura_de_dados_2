@@ -1,32 +1,31 @@
 #include <stdio.h>
 
-
-int* Bolha(int* vetorInt){
-    int size = sizeof(vetorInt)/sizeof(int);
-    int* novoVetor (int*)malloc(size);
+void Bolha(int *vetorInt, int size) {
     int auxiliar;
+    int i, j;
 
-    for(int i = size - 1; i > 1; i--){
-        for(int j = 0; j < i; j --){
-            if(vetorInt[j] > vetorInt[j + 1]){
+    for (i = size - 1; i > 0; i--) {
+        for (j = 0; j < i; j++) {
+            if (vetorInt[j] > vetorInt[j + 1]) {
                 auxiliar = vetorInt[j];
                 vetorInt[j] = vetorInt[j + 1];
-                vetorInt[j+1] = auxiliar;
+                vetorInt[j + 1] = auxiliar;
             }
         }
     }
-
 }
 
-int main(void){
-    int vetor[4] = {4,1,4,6};
+int main(void) {
+    int vetor[4] = {4, 1, 4, 6};
+    int size = sizeof(vetor) / sizeof(vetor[0]);
 
-    vetor = Bolha(vetor);
+    Bolha(vetor, size);
 
-    for(int i = 0; i < sizeof(vetInt)/sizeof(int); i ++){
+    printf("Vetor ordenado: ");
+    for (int i = 0; i < size; i++) {
         printf("[%d]", vetor[i]);
     }
-
+    printf("\n");
 
     return 0;
 }
