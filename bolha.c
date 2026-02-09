@@ -1,31 +1,56 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
-void Bolha(int *vetorInt, int size) {
-    int auxiliar;
-    int i, j;
+#define TAMANHO 10000
 
-    for (i = size - 1; i > 0; i--) {
-        for (j = 0; j < i; j++) {
-            if (vetorInt[j] > vetorInt[j + 1]) {
-                auxiliar = vetorInt[j];
-                vetorInt[j] = vetorInt[j + 1];
-                vetorInt[j + 1] = auxiliar;
+void bubbleSort(int vetor[], int n) {
+    long long comparacoes = 0;
+    long long trocas = 0;
+    int i, j, temp;
+    
+    clock_t inicio, fim;
+    double tempo_gasto;
+
+    inicio = clock();
+
+    for (i = 0; i < n - 1; i++) {
+        for (j = 0; j < n - i - 1; j++) {
+            
+            comparacoes++; 
+            
+            if (vetor[j] > vetor[j + 1]) {
+                temp = vetor[j];
+                vetor[j] = vetor[j + 1];
+                vetor[j + 1] = temp;
+                
+                trocas++; 
             }
         }
     }
+
+    fim = clock();
+    
+    tempo_gasto = ((double)(fim - inicio)) / CLOCKS_PER_SEC;
+
+    printf("\n--- RESULTADOS ---\n");
+    printf("Tamanho do vetor: %d\n", n);
+    printf("Comparacoes realizadas: %lld\n", comparacoes);
+    printf("Trocas realizadas: %lld\n", trocas);
+    printf("Tempo de execucao: %f segundos\n", tempo_gasto);
 }
 
-int main(void) {
-    int vetor[4] = {4, 1, 4, 6};
-    int size = sizeof(vetor) / sizeof(vetor[0]);
+int main() {
+    int vetor[TAMANHO];
+    int i;
 
-    Bolha(vetor, size);
+    srand(time(NULL));
 
-    printf("Vetor ordenado: ");
-    for (int i = 0; i < size; i++) {
-        printf("[%d]", vetor[i]);
+    for (i = 0; i < TAMANHO; i++) {
+        vetor[i] = rand() % 100000;
     }
-    printf("\n");
+
+    bubbleSort(vetor, TAMANHO);
 
     return 0;
 }
